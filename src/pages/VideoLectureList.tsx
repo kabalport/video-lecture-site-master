@@ -1,27 +1,9 @@
-import { Container, Typography, List, ListItem, ListItemText } from '@mui/material';
+// VideoLectureList.tsx
+import {Container, Typography, List, ListItem, ListItemText, Divider, TextField} from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import React from 'react';
-
-interface Lecture {
-    id: number;
-    title: string;
-    description: string;
-}
-
-// Dummy lectures data for the example
-const lectures: Lecture[] = [
-    {
-        id: 1,
-        title: 'Example Lecture 1',
-        description: 'This is an example lecture for the purpose of demonstration.',
-    },
-    {
-        id: 2,
-        title: 'Example Lecture 2',
-        description: 'This is another example lecture for the purpose of demonstration.',
-    },
-    // Add more lectures as needed
-]
+import React, {useState} from 'react';
+import {Link} from "react-router-dom";
+import { Lecture, lectures } from './LectureData';  // Make sure this path is correct
 
 const useStyles = makeStyles({
     root: {
@@ -33,19 +15,39 @@ const useStyles = makeStyles({
 const VideoLectureList = () => {
     const classes = useStyles();
 
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const searchResults = lectures.filter((lecture) =>
+        lecture.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <Container className={classes.root}>
             <Typography variant="h4" gutterBottom>
                 Video Lectures
             </Typography>
+            <TextField
+                label="Search for a lecture"
+                variant="outlined"
+                value={searchTerm}
+                onChange={handleSearchChange}
+            />
+
             <List>
-                {lectures.map((lecture) => (
-                    <ListItem button key={lecture.id}>
-                        <ListItemText
-                            primary={lecture.title}
-                            secondary={lecture.description}
-                        />
-                    </ListItem>
+                {searchResults.map((lecture) => (
+                    <div key={lecture.id}>
+                        <ListItem component={Link} to={`/lectures/${lecture.id}`}>
+                            <ListItemText
+                                primary={lecture.title}
+                                secondary={`Instructor: ${lecture.instructor}`}
+                            />
+                        </ListItem>
+                        <Divider />
+                    </div>
                 ))}
             </List>
         </Container>

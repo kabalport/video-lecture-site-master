@@ -13,6 +13,9 @@ import Career from "./pages/Career";
 import Notice from "./pages/Notice";
 import Job from "./pages/Job";
 import Faq from "./pages/Faq";
+import Qaa from "./pages/QAAListPage";
+import QAAListPage from "./pages/QAAListPage";
+import QAARegisterPage from "./pages/QAARegisterPage";
 
 const App = () => {
     return (
@@ -21,12 +24,14 @@ const App = () => {
                 <Header />
                 <NavBar />
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/refa" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/career" element={<Career />} />
                     <Route path="/notice" element={<Notice />} />
                     <Route path="/job" element={<Job />} />
                     <Route path="/faq" element={<Faq />} />
+                    <Route path="/qaa" element={<QAAListPage />} />
+                    <Route path="/qaaregister" element={<QAARegisterPage />} />
 
                     <Route path="/lectures" element={<VideoLectureList />} />
                     <Route path="/lectures/:id" element={<VideoLectureDetail />} />

@@ -49,7 +49,7 @@ const NavBar = () => {
     const goToJob = () => navigate("/job");
     const goToFaq = () => navigate("/faq");
     const goToQaa = () => navigate("/qaa");
-    const goToLecture = () => navigate("/lecture");
+    const goToLecture = () => navigate("/lectures");
 
     const classes = useStyles();
     const [dropdownOpen1, setDropdownOpen1] = useState(false);
