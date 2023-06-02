@@ -16,28 +16,35 @@ import Faq from "./pages/Faq";
 import Qaa from "./pages/QAAListPage";
 import QAAListPage from "./pages/QAAListPage";
 import QAARegisterPage from "./pages/QAARegisterPage";
-
+import LoginPage from "./pages/LoginPage";
 const App = () => {
     return (
         <LectureProvider>
             <Router>
                 <Header />
-                <NavBar />
                 <Routes>
-                    <Route path="/refa" element={<Home />} />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/career" element={<Career />} />
-                    <Route path="/notice" element={<Notice />} />
-                    <Route path="/job" element={<Job />} />
-                    <Route path="/faq" element={<Faq />} />
-                    <Route path="/qaa" element={<QAAListPage />} />
-                    <Route path="/qaaregister" element={<QAARegisterPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<LoginPage />} />
+                    <Route path="/refa/*" element={
+                        <>
+                            <NavBar />
+                            <Routes >
+                                <Route path="/" element={<Home />} />
+                                <Route path="/about" element={<About />} />
+                                <Route path="/career" element={<Career />} />
+                                <Route path="/notice" element={<Notice />} />
+                                <Route path="/job" element={<Job />} />
+                                <Route path="/faq" element={<Faq />} />
+                                <Route path="/qaa" element={<QAAListPage />} />
+                                <Route path="/qaaregister" element={<QAARegisterPage />} />
 
-                    <Route path="/lectures" element={<VideoLectureList />} />
-                    <Route path="/lectures/:id" element={<VideoLectureDetail />} />
-
+                                <Route path="/lectures" element={<VideoLectureList />} />
+                                <Route path="/lectures/:id" element={<VideoLectureDetail />} />
+                            </Routes>
+                            <Footer />
+                        </>
+                    }/>
                 </Routes>
-                <Footer />
             </Router>
         </LectureProvider>
     );

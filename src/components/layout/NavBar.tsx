@@ -36,7 +36,14 @@ const useStyles = makeStyles({
     'dropdownContent a:hover': {
         color: '#61dafb', // set hover color to blue
     },
-})
+    subMenu: {
+        display: 'block',
+        cursor: 'pointer',
+        '&:hover': {
+            color: '#61dafb', // set hover color to blue
+        },
+    },
+});
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -71,8 +78,8 @@ const NavBar = () => {
                 >
                     <Typography variant="h6" onClick={goToAbout} style={{cursor: 'pointer'}}>부동산융합아카데미</Typography>
                     <Box className={`${classes.dropdownContent} ${dropdownOpen1 ? classes.dropdownContentShow : ''}`}>
-                        <Link onClick={goToAbout} style={{display: 'block'}}>부동산융합아카데미란</Link>
-                        <Link onClick={goToCareer} style={{display: 'block'}}>커리어맵</Link>
+                        <Typography className={classes.subMenu} onClick={goToAbout}>부동산융합아카데미란</Typography>
+                        <Typography className={classes.subMenu} onClick={goToCareer}>커리어맵</Typography>
                     </Box>
                 </Box>
                 <Box
@@ -82,10 +89,10 @@ const NavBar = () => {
                 >
                     <Typography variant="h6" onClick={goToNotice} style={{cursor: 'pointer'}}>커뮤니티</Typography>
                     <Box className={`${classes.dropdownContent} ${dropdownOpen2 ? classes.dropdownContentShow : ''}`}>
-                        <Link onClick={goToNotice} style={{display: 'block'}}>공지사항</Link>
-                        <Link onClick={goToJob} style={{display: 'block'}}>구인구직</Link>
-                        <Link onClick={goToFaq} style={{display: 'block'}}>자주묻는질문</Link>
-                        <Link onClick={goToQaa} style={{display: 'block'}}>1:1문의</Link>
+                        <Typography className={classes.subMenu} onClick={goToNotice}>공지사항</Typography>
+                        <Typography className={classes.subMenu} onClick={goToJob}>구인구직</Typography>
+                        <Typography className={classes.subMenu} onClick={goToFaq}>자주묻는질문</Typography>
+                        <Typography className={classes.subMenu} onClick={goToQaa}>1:1문의</Typography>
                     </Box>
                 </Box>
                 <Typography variant="h6" onClick={goToLecture} style={{cursor: 'pointer', marginRight: '24px'}}>강의검색</Typography>
